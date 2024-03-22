@@ -11,6 +11,8 @@
 
 
     <include file="db/changelog/scripts/create_city_table.xml" />
+    <include file="db/changelog/scripts/create_tourist_table.xml" />
+    <include file="db/changelog/scripts/create_monument_table.xml" />
 
 
 </databaseChangeLog>
