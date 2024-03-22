@@ -1,0 +1,14 @@
+{
+  "realm": "ENSA",
+  "auth-server-url": "http://localhost:8080",
+  "resource": "pfa",
+  "credentials": {
+    "secret": "d7Jv4FjLDvvQUrI9F8RjdoHeCZKFuzfP"
+  },
+  "paths" : [
+    {
+      "path": "/register",
+      "enforcement-mode": "DISABLED"
+    }
+  ]
+}
