@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+        http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+
+
+    <changeSet id="insert_monument_marrakech" author="pfa">
+
+        <insert tableName="monument">
+            <column name="name" value="Koutoubia Mosque" />
+            <column name="description" value="The Koutoubia, an essential starting point for exploring the Medina of Marrakech, is a prestigious legacy of the Almoravid and Almohad dynasties. Close to Djemaa el Fna square, it is the largest mosque in the city, dating back 9 centuries." />
+            <column name="latitude" value="31.6237" />
+            <column name="longitude" value="-7.9936" />
+            <column name="city_id" value="6" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Jemaa el Fna Square" />
+            <column name="description" value="Djemaa el-Fna Square in Marrakech, Morocco, is a lively hub both during the day and at night. Merchants, musicians, and snake charmers create an enchanting atmosphere at the heart of the Medina. A unique sensory experience." />
+            <column name="latitude" value=" 31.6260" />
+            <column name="longitude" value="-7.9890" />
+            <column name="city_id" value="6" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Bahia Palace" />
+            <column name="description" value="Bahia Palace in Marrakech is an architectural marvel. Its lush gardens and sumptuous halls offer immersion into the opulence of the era. A historical treasure to discover." />
+            <column name="latitude" value=" 31.6217" />
+            <column name="longitude" value="-7.9820" />
+            <column name="city_id" value="6" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Ben Youssef Madrasa" />
+            <column name="description" value="Ben Youssef Madrasa in Marrakech is a gem of Islamic architecture. Its courtyards adorned with mosaics and artistic details reflect the richness of Moroccan history and culture. A captivating immersion into the past." />
+            <column name="latitude" value="31.6321" />
+            <column name="longitude" value="-7.9863" />
+            <column name="city_id" value="6" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="El Badi Palace" />
+            <column name="description" value="El Badi Palace is a majestic ruin, a testimony to past grandeur. Its vast courtyards and imposing walls evoke a bygone era. An intriguing exploration of the city's historical heritage." />
+            <column name="latitude" value="31.6182" />
+            <column name="longitude" value="-7.9859" />
+            <column name="city_id" value="6" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Saadian Tombs" />
+            <column name="description" value="The Saadian Tombs in Marrakech are a hidden treasure of sepulchral elegance. These 16th-century mausoleums exude an aura of mystery and solemnity. A silent experience at the heart of Moroccan history." />
+            <column name="latitude" value="31.6171" />
+            <column name="longitude" value="-7.9890" />
+            <column name="city_id" value="6" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Menara Gardens" />
+            <column name="description" value="The Menara Gardens in Marrakech are a haven of natural peace. With its vast basin and iconic pavilion, the garden offers a serene escape amidst the bustling city. A tranquil oasis steeped in history and beauty." />
+            <column name="latitude" value="31.6295" />
+            <column name="longitude" value="-7.9811" />
+            <column name="city_id" value="6" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Bab Agnaou" />
+            <column name="description" value="Bab Agnaou, a 12th-century gateway to Marrakech's Medina, boasts striking red sandstone walls and intricate carvings. It's a window into Morocco's rich past, offering a brief yet captivating glimpse into the city's history and architectural legacy." />
+            <column name="latitude" value="31.6176" />
+            <column name="longitude" value="-7.9907" />
+            <column name="city_id" value="6" />
+        </insert>
+
+        <!-- b9it hna f Bab Er Robb-->
+        <insert tableName="monument">
+            <column name="name" value="Bab Er Robb" />
+            <column name="description" value="Bab er Robb, a 12th-century gate in Marrakech's Medina, whispers tales of ancient splendor. Its sturdy walls and subtle adornments offer a glimpse into the city's storied past, inviting curiosity about its rich history." />
+            <column name="latitude" value="31.6171" />
+            <column name="longitude" value="-7.9907" />
+            <column name="city_id" value="6" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Kasbah Mosque" />
+            <column name="description" value="Kasbah Mosque, a serene landmark in Marrakech's Kasbah district, radiates timeless elegance and spiritual significance. With its graceful minaret and intricate façade, it offers a glimpse into Morocco's rich architectural heritage and spiritual tradition" />
+            <column name="latitude" value="31.6175" />
+            <column name="longitude" value="-7.9891" />
+            <column name="city_id" value="6" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Tanneries" />
+            <column name="description" value="The Tanneries of Marrakech, nestled within the Medina, are vibrant hubs of traditional leathercraft. Here, amidst bustling workshops, artisans transform raw hides into fine leather goods, offering visitors a brief yet immersive glimpse into the city's rich cultural heritage." />
+            <column name="latitude" value="31.6336" />
+            <column name="longitude" value="-7.9785" />
+            <column name="city_id" value="6" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Majorelle Garden" />
+            <column name="description" value="Majorelle Garden in Marrakech is a serene oasis created by Jacques Majorelle. Amidst lush greenery and vibrant blue structures, visitors find a tranquil escape from the city's hustle and bustle, a brief yet refreshing retreat into nature's beauty." />
+            <column name="latitude" value="31.6412" />
+            <column name="longitude" value="-8.0032" />
+            <column name="city_id" value="6" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Almoravid Koubba" />
+            <column name="description" value="The Almoravid Koubba in Marrakech is a centuries-old architectural marvel. With its intricate designs and rich history, it offers a brief yet captivating glimpse into the city's Islamic heritage." />
+            <column name="latitude" value="31.63225679" />
+            <column name="longitude" value="-7.986959223" />
+            <column name="city_id" value="6" />
+        </insert>
+
+
+
+
+
+
+    </changeSet>
+
+
+
+</databaseChangeLog>

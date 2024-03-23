@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+        http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+
+
+    <changeSet id="insert_monument_meknes" author="pfa">
+
+        <insert tableName="monument">
+            <column name="name" value="Dar Jamai Museum" />
+            <column name="description" value="The Dar Jamai Museum is a museum in Meknes, Morocco. It displays a number of artifacts and art objects from the city and other regions in Morocco. It is housed in a late 19th-century palace built by the Jama'i family who also built the Jamai Palace in Fes." />
+            <column name="latitude" value="33.8943821093724" />
+            <column name="longitude" value="-5.56634486561983" />
+            <column name="city_id" value="2" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Heri es-Souani" />
+            <column name="description" value="The Heri es-Swani or Heri es-Souani, sometimes also transliterated as Hury as-Swani or Hri Swani, is a historic monument in Meknes, Morocco. It was a massive structure that served as a granary or silo for the Imperial Kasbah built by Moulay Isma'il during his reign from 1672 to 1727" />
+            <column name="latitude" value="33.881393005489" />
+            <column name="longitude" value="-5.55707841220136" />
+            <column name="city_id" value="2" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Bab El Mansour Laalej" />
+            <column name="description" value="Bab Mansur al-'Alj or Bab Mansour is a monumental gate in the city of Meknes, Morocco. Located on the south side of Place el-Hedim in the old city, it was originally the main ceremonial entrance to the Kasbah of Sultan Moulay Isma'il, built in the late 17th and early 18th centuries" />
+            <column name="latitude" value="33.8933386872222" />
+            <column name="longitude" value="-5.5641537582269" />
+            <column name="city_id" value="2" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Mausoleum of Moulay Ismail" />
+            <column name="description" value="The Mausoleum of Moulay Isma'il is a historic Islamic funerary complex in Meknes, Morocco. It contains the tomb of Sultan Moulay Isma'il, who ruled Morocco from 1672 until his death in 1727, and is located inside his former Kasbah. It is a major historic and religious site in the city" />
+            <column name="latitude" value="33.8912572603866" />
+            <column name="longitude" value="-5.5617324360481" />
+            <column name="city_id" value="2" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Prison de Kara" />
+            <column name="description" value="Qara Prison or Habs Qara, also known as the Prison of the Christian Slaves, is a series of underground vaulted chambers built in the early 18th century in Meknes, Morocco, by order of Sultan Moulay Ismai" />
+            <column name="latitude" value="33.8915605146903" />
+            <column name="longitude" value="-5.56445292698722" />
+            <column name="city_id" value="2" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Great Mosque of Meknes" />
+            <column name="description" value="The Grand Mosque of Meknes is the historic main mosque of the old city of Meknes, Morocco. It is the largest and most important mosque in the old city and one of its oldest monuments" />
+            <column name="latitude" value="33.8954330014711" />
+            <column name="longitude" value="-5.56432247356875" />
+            <column name="city_id" value="2" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Madrasa Bou Inania" />
+            <column name="description" value="The Bou Inania Madrasa is a historic madrasa in the city of Meknes, Morocco. The building, well-preserved thanks to later restorations, is considered an excellent example of the richly-decorated madrasas of the Marinid period" />
+            <column name="latitude" value="33.8956929325958" />
+            <column name="longitude" value="-5.56282906784375" />
+            <column name="city_id" value="2" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Lahdim Square" />
+            <column name="description" value="Vast public gathering place known for food sellers, market stalls and imperial Bab Mansour gate. The square was built in the years 1672-1674 after the Sultan of Morocco, Moulay Ismail" />
+            <column name="latitude" value="33.8936239687152" />
+            <column name="longitude" value="-5.56323817523669" />
+            <column name="city_id" value="2" />
+        </insert>
+
+
+
+
+    </changeSet>
+
+
+
+</databaseChangeLog>

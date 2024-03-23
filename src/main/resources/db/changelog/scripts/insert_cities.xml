@@ -10,18 +10,32 @@
         http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
 
-    <include file="db/changelog/scripts/create_city_table.xml" />
-    <include file="db/changelog/scripts/create_tourist_table.xml" />
-    <include file="db/changelog/scripts/create_monument_table.xml" />
+    <changeSet id="insert_cities" author="pfa">
 
-    <include file="db/changelog/scripts/insert_cities.xml" />
-    <include file="db/changelog/scripts/insert_monument_fes.xml" />
-    <include file="db/changelog/scripts/insert_monument_meknes.xml" />
-    <include file="db/changelog/scripts/insert_monument_rabat.xml" />
-    <include file="db/changelog/scripts/insert_monument_tangier.xml" />
-    <include file="db/changelog/scripts/insert_monument_casablanca.xml" />
-    <include file="db/changelog/scripts/insert_monument_marrakech.xml" />
+        <insert tableName="city">
+            <column name="name" value="fes" />
+        </insert>
 
+        <insert tableName="city">
+            <column name="name" value="meknes" />
+        </insert>
+
+        <insert tableName="city">
+            <column name="name" value="rabat" />
+        </insert>
+
+        <insert tableName="city">
+            <column name="name" value="tangier" />
+        </insert>
+
+        <insert tableName="city">
+            <column name="name" value="casablanca" />
+        </insert>
+
+        <insert tableName="city">
+            <column name="name" value="marrakech" />
+        </insert>
+    </changeSet>
 
 
 

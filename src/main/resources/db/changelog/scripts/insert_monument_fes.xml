@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+        http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+
+
+    <changeSet id="insert_monument_fes" author="pfa">
+
+        <insert tableName="monument">
+            <column name="name" value="Al Qaraouiyine University" />
+            <column name="description" value="Al Quaraouiyine University: is a university located in Fez, Morocco. According to tradition, its construction began in 859 during the reign of the Idrisid dynasty. It is considered by UNESCO to be the oldest university in the world still in operation." />
+            <column name="latitude" value="34.06525" />
+            <column name="longitude" value="-4.97336" />
+            <column name="city_id" value="1" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Jnane Sbil Garden" />
+            <column name="description" value="The gardens cover around 7.5 hectares. Today, they constitute one of the few urban green spaces in the old town and are a popular leisure spot, especially at dusk. They are decorated with colorful fountains and planted with over 3,000 species, including subsections entitled Andalusian Garden, Mexican Garden and Bamboo Garden.  The garden is regularly open during the day but is normally closed on Mondays. It is one of the venues for the annual World Festival of Sacred Music. " />
+            <column name="latitude" value="34.05880269350849" />
+            <column name="longitude" value="-4.986556495774336" />
+            <column name="city_id" value="1" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Batha Museum" />
+            <column name="description" value=" The Al Batha Museum was originally an audience palace and summer residence built by Sultan Moulay Hassan I in the late 19th century. His successor, Moulay Abdelaziz, completed and embellished the building in the Arabo-Andalusian style. In 1915, the palace was transformed into the Museum of Popular Arts and Traditions, and a few years later, in 1924, it was classified as a national heritage monument. Today, the Museum houses a permanent archaeological and ethnographic exhibition, reflecting the arts and traditions of Morocco's spiritual capital. The Museum also preserves the kingdom's oldest pieces of Islamic art, such as the Idrissid beam and the minbar from the Mosque in the Andalusian quarter." />
+            <column name="latitude" value="34.06064100000001" />
+            <column name="longitude" value="-4.982677038028913" />
+            <column name="city_id" value="1" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Dar Pacha Tazi" />
+            <column name="description" value="Built in 1900, this palace was successively the home of senior Makhzen figures until 1986, when it became the headquarters of the Fès-Saïs Association. It occupies a vast space of around 4800m2. The residence is distinguished by its many pavilions, kiosks and gardens. These are laid out in rectilinear plots. The palace features several fountains, with basins of varying depths. Wooden and wrought-iron railings and balustrades delimit the planted squares. Among the many species of trees are orange, Aleppo pine, date palm, cypress and laurel. This residence retains a refreshingly open aspect in a rather dense urban environment. The Fès-Saïs Association organizes a number of events here every year, as part of the festivals to which it contributes, such as the Fès Festival of World Sacred Music, the Festival of Culinary Arts, the Malhoune Festival and the Festival of Arabic Poetry." />
+            <column name="latitude" value="34.0603578" />
+            <column name="longitude" value="-4.9737141" />
+            <column name="city_id" value="1" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Abdeslam Moqri Palace" />
+            <column name="description" value="The Moqri family was a wealthy family of merchant origin that rose to prominence within the royal government (or makhzen). Originally from Tlemcen, they immigrated to Morocco in the early 19th century under the leadership of Patriarch Abu Abdallah al-Akhal, and settled in Fez in 1805. His son Haj Abdesalam al-Moqri became Secretary of the Treasury under Sultan Moulay Hassan, before later being put in charge of royal construction. He supervised the construction of Dar Batha and the adjacent Dar al-Beida palace in Fez. It was Haj Abdelsalam who built Dar Moqri in the late 19th century, its size and wealth reflecting the family's wealth at the time. The house is located in a district historically known as al-'Uyun (the Springs) and known today as the Ziat or Ziyat district, which until the 19th century was a garden district with relatively plenty of open space to build, thus attracting the construction of several new mansions by wealthy families. The Glaoui and al-Tazi families, for example, also had their own palatial residences in the same district, which still exist today. " />
+            <column name="latitude" value="34.05874212699572" />
+            <column name="longitude" value="-4.9755986" />
+            <column name="city_id" value="1" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Riad Driss Moqri" />
+            <column name="description" value="The Riad Driss Moqri, was built further north in the 20th century by Driss Moqri, a brother of Muhammad al-Moqri who was mohtasib in Fes." />
+            <column name="latitude" value="34.0603753" />
+            <column name="longitude" value="-4.9780915" />
+            <column name="city_id" value="1" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Dar Adiyel" />
+            <column name="description" value="Dar Adiyel or Dar 'Adiyil is a historic mansion in Fès el-Bali , the ancient medina of Fès , Morocco . It is located in the Zqaq el-Bghal district, a short distance south of rue Tala'a Seghira . History The exact date of the house's construction is unknown, but it was built in the late 17th or early 18th century. The house is named after one of its first owners, Abd al-Khaliq 'Adiyil. He was a wealthy merchant who was amin (provost or magistrate) in Fez under the Alawite sultan Moulay Ismail (ruled 1672-1727), then became governor of the city under his son, sultan Moulay Abdallah (ruled 1729-1734). Adiyil was also responsible for the construction of Funduq al-Najjarin to the east. After his death in 1747, the house became government property and in the 19th century, it was used as a treasury office. Coins were minted here for the city and indirect tax revenues were collected here before being transferred to the central treasury. At the time of the creation of the French protectorate over Morocco in 1912, the house became the regional headquarters of the Service des Arts Indigènes (Indigenous Arts Service/Office, which oversaw the study and preservation of historical heritage, under the direction of Alfred Bel at the time. " />
+            <column name="latitude" value="34.062562" />
+            <column name="longitude" value="-4.976045" />
+            <column name="city_id" value="1" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Mnbhi Palace" />
+            <column name="description" value=" The Al Batha Museum was originally an audience palace and summer residence built by Sultan Moulay Hassan I in the late 19th century. His successor, Moulay Abdelaziz, completed and embellished the building in the Arabo-Andalusian style. In 1915, the palace was transformed into the Museum of Popular Arts and Traditions, and a few years later, in 1924, it was classified as a national heritage monument. Today, the Museum houses a permanent archaeological and ethnographic exhibition, reflecting the arts and traditions of Morocco's spiritual capital. The Museum also preserves the kingdom's oldest pieces of Islamic art, such as the Idrissid beam and the minbar from the Mosque in the Andalusian quarter." />
+            <column name="latitude" value="34.06291973549229" />
+            <column name="longitude" value="-4.979015794389052" />
+            <column name="city_id" value="1" />
+        </insert>
+
+
+    </changeSet>
+
+
+
+</databaseChangeLog>

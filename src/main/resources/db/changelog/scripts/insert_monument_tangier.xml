@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+        http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+
+
+    <changeSet id="insert_monument_tangier" author="pfa">
+
+        <insert tableName="monument">
+            <column name="name" value="Hercules Caves" />
+            <column name="description" value="The Caves of Hercules is an archaeological cave complex located in Cape Spartel,The cave has two openings, one to the sea and one to land. The sea opening is known as The Map of Africa. It is believed that the Phoenicians created the sea opening, which is in the shape of Africa when looked at from the sea." />
+            <column name="latitude" value="35.7607692866963" />
+            <column name="longitude" value="-5.93912461164538" />
+            <column name="city_id" value="4" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Kasbah Museum" />
+            <column name="description" value="Collection of antiques, artifacts and statues detailing the history of the Tangier area." />
+            <column name="latitude" value="35.7887402819403" />
+            <column name="longitude" value="-5.81228599630353" />
+            <column name="city_id" value="4" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Grand Mosque of Tangier" />
+            <column name="description" value="The Great Mosque of Tangier is the historic main mosque (Friday mosque) of Tangier, Morocco, located in the city's ancient medina. Although the current mosque was designed in the early 19th century, during the Alawite period the site was occupied by a succession of religious buildings dating back to antiquity." />
+            <column name="latitude" value="35.7863968372161" />
+            <column name="longitude" value="-5.80931735027799" />
+            <column name="city_id" value="4" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Kasbah Mosque" />
+            <column name="description" value="The Kasbah Mosque is a mosque in Tangier, Morocco, and the main mosque (Friday mosque) of the historic royal citadel (kasbah) in the old city (medina) of Tangier. It dates to the late 17th century." />
+            <column name="latitude" value="35.7888852420796" />
+            <column name="longitude" value="-5.8110482053644" />
+            <column name="city_id" value="4" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Cape Spartel" />
+            <column name="description" value="Cape Spartel is frequently but incorrectly referred to as the northernmost point of Africa, which is instead Ras ben Sakka,Tunisia; it is the most northwestern point.The cape rises to a height of 326 m. at the top of Jebel Quebir, where a lighthouse built by Sultan Muhammad IV in 1864 is situated at the end of a cliff" />
+            <column name="latitude" value="35.7916832955354" />
+            <column name="longitude" value="-5.92364786562223" />
+            <column name="city_id" value="4" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Immaculate Conception Church" />
+            <column name="description" value="The Church of the Immaculate Conception, also known as the Spanish Church or La Purísima, is a Roman Catholic church built in 1880-1881 in Tangier, Morocco" />
+            <column name="latitude" value="35.7859597812524" />
+            <column name="longitude" value="-5.81008958207364" />
+            <column name="city_id" value="4" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Dar el Makhzen" />
+            <column name="description" value="The Kasbah Palace, also known as Dar al-Makhzen, Sultan's Palace or Governor's Palace and formerly as the Sharifian Palace, is a historical building and museum in the Kasbah or citadel of Tangier, Morocco. Its site has long been the main seat of political power in Tangier" />
+            <column name="latitude" value="35.7887832541371" />
+            <column name="longitude" value="-5.81223266497371" />
+            <column name="city_id" value="4" />
+        </insert>
+
+
+    </changeSet>
+
+
+
+</databaseChangeLog>
