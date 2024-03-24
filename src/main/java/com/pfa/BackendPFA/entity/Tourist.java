@@ -22,6 +22,8 @@ public class Tourist {
     private String lastName;
     @Column(name = "email")
     private String email;
+    @Column(name = "phone_number")
+    private String phoneNumber;
     @Column(name = "password")
     private String password;
 

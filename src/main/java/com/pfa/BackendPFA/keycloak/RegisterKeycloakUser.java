@@ -1,25 +1,26 @@
 package com.pfa.BackendPFA.keycloak;
 
-import com.pfa.BackendPFA.model.ModelTest;
+import com.pfa.BackendPFA.entity.Tourist;
+import com.pfa.BackendPFA.repository.TouristRepository;
+import lombok.RequiredArgsConstructor;
 import org.keycloak.admin.client.Keycloak;
 import org.keycloak.admin.client.KeycloakBuilder;
-import org.keycloak.admin.client.resource.RealmResource;
-import org.keycloak.admin.client.resource.UserResource;
 import org.keycloak.admin.client.resource.UsersResource;
 import org.keycloak.representations.idm.CredentialRepresentation;
-import org.keycloak.representations.idm.RequiredActionProviderRepresentation;
 import org.keycloak.representations.idm.RoleRepresentation;
 import org.keycloak.representations.idm.UserRepresentation;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 
-@Component
+@Service
+@RequiredArgsConstructor
 public class RegisterKeycloakUser {
+    private final TouristRepository touristRepository;
+    private final PasswordEncoder passwordEncoder;
     private final String keycloakAdminUsername = "noreply.tourismapp@gmail.com";
     private final String keycloakAdminPassword = "admin";
     private final String keycloakAdminRealm = "ENSA";
@@ -36,24 +37,26 @@ public class RegisterKeycloakUser {
             .grantType(keycloakAdminGrantType)
             .build();
 
-    public ResponseEntity<String> Register(ModelTest modelTest){
+    public ResponseEntity<String> Register(Tourist tourist){
         try {
             UsersResource userResource = keycloak.realm(keycloakAdminRealm).users();
-            List<UserRepresentation> existingUsers = userResource.search(modelTest.getEmail());
+            List<UserRepresentation> existingUsers = userResource.search(tourist.getEmail());
 
             if (!existingUsers.isEmpty()) {
                 // User with the same email already exists
-                throw new RuntimeException("User with email " + modelTest.getEmail() + " already exists");
+                throw new RuntimeException();
             }
 
 
             UserRepresentation user = new UserRepresentation();
-            user.setEmail(modelTest.getEmail());
+            user.setEmail(tourist.getEmail());
+            user.setFirstName(tourist.getFirstName());
+            user.setLastName(tourist.getLastName());
             user.setEnabled(true);
 
             CredentialRepresentation passwordCred = new CredentialRepresentation();
             passwordCred.setType(CredentialRepresentation.PASSWORD);
-            passwordCred.setValue(modelTest.getPassword());
+            passwordCred.setValue(tourist.getPassword());
 
             user.setCredentials(List.of(passwordCred));
             keycloak.realm(keycloakAdminRealm).users().create(user);
@@ -63,9 +66,12 @@ public class RegisterKeycloakUser {
             RoleRepresentation role = keycloak.realm(keycloakAdminRealm).roles().get(roleName).toRepresentation();
             keycloak.realm(keycloakAdminRealm).users().get(userId).roles().realmLevel().add(List.of(role));
 
+            tourist.setPassword(passwordEncoder.encode(tourist.getPassword()));
+            touristRepository.save(tourist);
+
             return ResponseEntity.ok("Tourist Created");
         } catch (Exception e){
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.toString());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An Error Occurred, Please Try Again");
         }
     }
 }
