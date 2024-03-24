@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+        http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+
+
+    <changeSet id="insert_monument_casablanca" author="pfa">
+
+        <insert tableName="monument">
+            <column name="name" value="Hassan II Mosque" />
+            <column name="description" value="The Hassan II Mosque, one of the world's largest mosques, is an architectural masterpiece overlooking the Atlantic Ocean, featuring a 210-meter minaret." />
+            <column name="latitude" value="33.6082" />
+            <column name="longitude" value="-7.6327" />
+            <column name="city_id" value="5" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Old Medina" />
+            <column name="description" value="The Old Medina of Casablanca offers traditional charm with narrow streets, bustling markets, and Moroccan architecture" />
+            <column name="latitude" value=" 33.6022" />
+            <column name="longitude" value="-7.6209" />
+            <column name="city_id" value="5" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Habous Quarter" />
+            <column name="description" value="Also known as the New Medina, the Habous Quarter combines traditional Moroccan architecture with modern planning, offering markets and a peaceful atmosphere" />
+            <column name="latitude" value="33.5792" />
+            <column name="longitude" value="-7.6033" />
+            <column name="city_id" value="5" />
+        </insert>
+
+
+        <insert tableName="monument">
+            <column name="name" value="Our Lady of Lourdes" />
+            <column name="description" value="This Catholic church boasts beautiful architecture with stained glass windows, symbolizing Casablanca's religious diversity." />
+            <column name="latitude" value="33.5827" />
+            <column name="longitude" value="-7.6156" />
+            <column name="city_id" value="5" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="New Medina of Casablanca" />
+            <column name="description" value="Inspired by traditional architecture, the New Medina blends modern Moroccan style." />
+            <column name="latitude" value="33.5765" />
+            <column name="longitude" value="-7.6039" />
+            <column name="city_id" value="5" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Mohammed V Square" />
+            <column name="description" value="The central square pays homage to King Mohammed V, surrounded by significant government buildings and banks." />
+            <column name="latitude" value="33.5911" />
+            <column name="longitude" value="-7.6186" />
+            <column name="city_id" value="5" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Mahkama of the Pacha" />
+            <column name="description" value="The historic courthouse, Mahkama of the Pacha, is renowned for its intricate architecture, reflecting Moroccan craftsmanship." />
+            <column name="latitude" value="33.5786" />
+            <column name="longitude" value="-7.6065" />
+            <column name="city_id" value="5" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="The Church of the Sacred Heart" />
+            <column name="description" value="This Catholic church features neo-Gothic architecture and serves as a place of worship and cultural heritage." />
+            <column name="latitude" value="33.5913" />
+            <column name="longitude" value="-7.6244" />
+            <column name="city_id" value="5" />
+        </insert>
+
+
+
+
+
+    </changeSet>
+
+
+
+</databaseChangeLog>

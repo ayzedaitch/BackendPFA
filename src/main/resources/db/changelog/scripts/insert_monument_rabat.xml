@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+        http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+
+
+    <changeSet id="insert_monument_rabat" author="pfa">
+
+        <insert tableName="monument">
+            <column name="name" value="Hassan Tower" />
+            <column name="description" value="Hassan Tower or Tour Hassan is the minaret of an incomplete mosque in Rabat, Morocco. It was commissioned by Abu Yusuf Yaqub al-Mansur, the third Caliph of the Almohad Caliphate, near the end of the 12th century." />
+            <column name="latitude" value="34.0241427576531" />
+            <column name="longitude" value="-6.82291449185077" />
+            <column name="city_id" value="3" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Kasbah of the Udayas" />
+            <column name="description" value="The Kasbah of the Udayas, also spelled Kasbah of the Oudaias or of the Oudayas, is a kasbah in Rabat, Morocco. It is located on a hill at the mouth of the Bou Regreg opposite Salé, and adjacent to the Medina quarter of Rabat. It is listed, along with other sites in Rabat, as a UNESCO World Heritage Site" />
+            <column name="latitude" value="34.0336840664416" />
+            <column name="longitude" value="-6.83495451164538" />
+            <column name="city_id" value="3" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Chellah" />
+            <column name="description" value="The Chellah or Shalla, is a medieval fortified Muslim necropolis and ancient archeological site in Rabat, Morocco, located on the south side of the Bou Regreg estuary. The earliest evidence of the site's occupation suggests that the Phoenicians established a trading emporium here in the first millennium BC" />
+            <column name="latitude" value="34.0073350101728" />
+            <column name="longitude" value="-6.82045877301277" />
+            <column name="city_id" value="3" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Mausoleum of Mohammed V" />
+            <column name="description" value="The Mausoleum of Mohammed V is a mausoleum located across from the Hassan Tower in Rabat, Morocco. It contains the tombs of the Moroccan king Mohammed V and his two sons, late King Hassan II and Prince Abdallah" />
+            <column name="latitude" value="34.0233787446665" />
+            <column name="longitude" value="-6.82073418151766" />
+            <column name="city_id" value="3" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Rabat Old Market" />
+            <column name="description" value="In this wonderful market in the heart of the city of Rabat, visitors will live the Moroccan experience in all its details. Local vendors who sell various types of traditional Moroccan goods are spread in this market. You will find dried fruits, various types of authentic Moroccan spices, handmade tagine pottery, and traditional fabrics and clothing." />
+            <column name="latitude" value="34.0279597024343" />
+            <column name="longitude" value="-6.83352697301277" />
+            <column name="city_id" value="3" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Bab er-Rouah" />
+            <column name="description" value="It was built by the Almohad caliph Ya'qub al-Mansur in the late 12th century, as part of the monumental capital he started building here. The gate and its adjoining ramparts were finished by 1197.The Arabic name Bab ar-Ruwah, meaning Gate of the Winds, likely derives from the strong Atlantic winds which batter the city." />
+            <column name="latitude" value="34.0133468942902" />
+            <column name="longitude" value="-6.83619342070625" />
+            <column name="city_id" value="3" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="St. Peters Cathedral" />
+            <column name="description" value="St. Peter's Cathedral is a Roman Catholic church located at Golan Square in downtown Rabat, Morocco. It was erected in the early 20th century in the Art Deco style. The cathedral is dedicated to Saint Peter, and is the ecclesiastical seat of the Archdiocese of Rabat" />
+            <column name="latitude" value="34.0185673451059" />
+            <column name="longitude" value="-6.83077097356875" />
+            <column name="city_id" value="3" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Royal Palace Rabat Morocco" />
+            <column name="description" value="The Royal Palace or Dar al-Makhzen is the primary and official residence of the king of Morocco in Rabat. It is situated in the commune of Touarga" />
+            <column name="latitude" value="34.0021312647679" />
+            <column name="longitude" value="-6.83982740480842" />
+            <column name="city_id" value="3" />
+        </insert>
+
+        <insert tableName="monument">
+            <column name="name" value="Andalusian Gardens" />
+            <column name="description" value="Tranquil public garden for quiet walks amid exotic plants, flowers and fruit trees." />
+            <column name="latitude" value="34.0306629170834" />
+            <column name="longitude" value="-6.83535755767092" />
+            <column name="city_id" value="3" />
+        </insert>
+
+
+
+
+    </changeSet>
+
+
+
+</databaseChangeLog>
