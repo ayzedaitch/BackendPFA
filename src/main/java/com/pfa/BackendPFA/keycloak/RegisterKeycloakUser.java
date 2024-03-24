@@ -10,6 +10,9 @@ import org.keycloak.representations.idm.CredentialRepresentation;
 import org.keycloak.representations.idm.RequiredActionProviderRepresentation;
 import org.keycloak.representations.idm.RoleRepresentation;
 import org.keycloak.representations.idm.UserRepresentation;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.Collections;
@@ -33,8 +36,17 @@ public class RegisterKeycloakUser {
             .grantType(keycloakAdminGrantType)
             .build();
 
-    public String Register(ModelTest modelTest){
+    public ResponseEntity<String> Register(ModelTest modelTest){
         try {
+            UsersResource userResource = keycloak.realm(keycloakAdminRealm).users();
+            List<UserRepresentation> existingUsers = userResource.search(modelTest.getEmail());
+
+            if (!existingUsers.isEmpty()) {
+                // User with the same email already exists
+                throw new RuntimeException("User with email " + modelTest.getEmail() + " already exists");
+            }
+
+
             UserRepresentation user = new UserRepresentation();
             user.setEmail(modelTest.getEmail());
             user.setEnabled(true);
@@ -51,9 +63,9 @@ public class RegisterKeycloakUser {
             RoleRepresentation role = keycloak.realm(keycloakAdminRealm).roles().get(roleName).toRepresentation();
             keycloak.realm(keycloakAdminRealm).users().get(userId).roles().realmLevel().add(List.of(role));
 
-            return "success";
+            return ResponseEntity.ok("Tourist Created");
         } catch (Exception e){
-            return e.toString();
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.toString());
         }
     }
 }
