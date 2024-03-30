@@ -3,11 +3,25 @@
   "auth-server-url": "http://localhost:8080",
   "resource": "pfa",
   "credentials": {
-    "secret": "d7Jv4FjLDvvQUrI9F8RjdoHeCZKFuzfP"
+    "secret": "J6PM2oMnkiEURZJx5YzudNMt3eFQ0bnt"
   },
   "paths" : [
     {
       "path": "/register",
+      "enforcement-mode": "DISABLED"
+    },
+
+    {
+      "path": "/api/tourists",
+      "enforcement-mode": "DISABLED"
+    },
+
+    {
+      "path": "/api/tourists/delete",
+      "enforcement-mode": "DISABLED"
+    },
+    {
+      "path": "/api/tourists/{email:.+}",
       "enforcement-mode": "DISABLED"
     }
   ]
