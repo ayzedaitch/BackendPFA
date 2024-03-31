@@ -27,4 +27,8 @@ public class Tourist {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "is_enabled")
+    private Boolean isEnabled ;
+
+
 }

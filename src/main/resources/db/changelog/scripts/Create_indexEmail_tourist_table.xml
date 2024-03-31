@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+        http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+
+
+    <changeSet id="create_indexEmail_tourist_table" author="pfa">
+        <createIndex tableName="tourist"
+                     indexName="idx_email"
+                     unique="true">
+            <column name="email"/>
+        </createIndex>
+
+        <dropColumn columnName="password"
+                    tableName="tourist">
+            <column name="password"/>
+        </dropColumn>
+    </changeSet>
+
+
+
+</databaseChangeLog>

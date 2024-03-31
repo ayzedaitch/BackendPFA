@@ -22,6 +22,12 @@
     <include file="db/changelog/scripts/insert_monument_casablanca.xml" />
     <include file="db/changelog/scripts/insert_monument_marrakech.xml" />
 
+    <include file="db/changelog/scripts/addColumn_isEnable_touristTable.xml" />
+    <include file="db/changelog/scripts/Drop_isEnabled_Culumn.xml" />
+
+    <include file="db/changelog/scripts/Create_indexEmail_tourist_table.xml" />
+
+
 
 
 
