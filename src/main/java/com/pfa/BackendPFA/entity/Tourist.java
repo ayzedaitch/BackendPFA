@@ -3,10 +3,12 @@ package com.pfa.BackendPFA.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,9 +26,6 @@ public class Tourist {
     private String email;
     @Column(name = "phone_number")
     private String phoneNumber;
-    @Column(name = "password")
-    private String password;
-
     @Column(name = "is_enabled")
     private Boolean isEnabled ;
 

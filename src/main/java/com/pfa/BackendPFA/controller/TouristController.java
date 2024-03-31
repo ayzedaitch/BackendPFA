@@ -1,12 +1,12 @@
 package com.pfa.BackendPFA.controller;
 
 import com.pfa.BackendPFA.entity.Tourist;
+import com.pfa.BackendPFA.keycloak.KeycloakService;
 import com.pfa.BackendPFA.repository.TouristRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import java.util.Collections;
 
@@ -16,11 +16,11 @@ import java.util.Optional;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/tourists")
+@CrossOrigin("*")
 public class TouristController {
 
     private final TouristRepository touristRepository;
-    private final PasswordEncoder passwordEncoder;
-
+    private final KeycloakService keycloakService;
 
     @GetMapping
     public ResponseEntity<List<Tourist>> getAllTourists() {
@@ -58,42 +58,43 @@ public class TouristController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("New email already exists");
         }
 
-        //updating the email if the new email is not already taken
-        Optional<Tourist> touristOptional = touristRepository.findByEmail(currentEmail);
-        if (touristOptional.isPresent()) {
-            Tourist tourist = touristOptional.get();
-            if (passwordEncoder.matches(password, tourist.getPassword())) {
-                tourist.setEmail(newEmail);
-                touristRepository.save(tourist);
-                return ResponseEntity.ok("Tourist email updated successfully");
+        Optional<Tourist> touristOpt = touristRepository.findByEmail(currentEmail);
+        try {
+            if (touristOpt.isPresent()){
+                if (keycloakService.isPasswordCorrect(currentEmail, password)){
+                    Tourist tourist = touristOpt.get();
+                    tourist.setEmail(newEmail);
+                    ResponseEntity<String> res= keycloakService.updateEmail(currentEmail, newEmail);
+                    if(res.getStatusCode().isSameCodeAs(HttpStatus.OK)){
+                        touristRepository.save(tourist);
+                        return ResponseEntity.status(HttpStatus.OK).body("Tourist Email Updated");
+                    } else {
+                        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res.getBody());
+                    }
+                } else {
+                    return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body("Incorrect Password Or Account Not Verified Or Disabled");
+                }
             } else {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid password");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tourist Does Not Exist");
             }
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("Tourist not found with email: " + currentEmail);
+        } catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error Occurred, Please Try Again");
         }
+
+
     }
 
     @PostMapping("/update-password")
-    public ResponseEntity<String> updateTouristPassword(@RequestParam("email") String email,
-                                                        @RequestParam("currentPassword") String currentPassword,
-                                                        @RequestParam("newPassword") String newPassword) {
-        Optional<Tourist> touristOptional = touristRepository.findByEmail(email);
-        if (touristOptional.isPresent()) {
-            Tourist tourist = touristOptional.get();
-            if (passwordEncoder.matches(currentPassword, tourist.getPassword())) {
-                // Encode and update the new password
-                String encodedNewPassword = passwordEncoder.encode(newPassword);
-                tourist.setPassword(encodedNewPassword);
-                touristRepository.save(tourist);
-                return ResponseEntity.ok("Tourist password updated successfully");
+    public ResponseEntity<String> updateTouristPassword(@RequestParam("email") String email, @RequestParam("password") String password){
+        try {
+            if (keycloakService.isPasswordCorrect(email, password)) {
+                keycloakService.updatePassword(email);
+                return ResponseEntity.status(HttpStatus.OK).body("Tourist Required Actions Updated");
             } else {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid current password");
+                return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body("Incorrect Password Or Account Not Verified Or Disabled");
             }
-        } else {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("Tourist not found with email: " + email);
+        } catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error Occurred, Please Try Again");
         }
     }
 
@@ -101,21 +102,30 @@ public class TouristController {
     public ResponseEntity<String> deleteTourist(@RequestParam("email") String email,
                                                 @RequestParam("password") String password){
         Optional<Tourist> touristOptional = touristRepository.findByEmail(email);
-        if (touristOptional.isPresent()) {
-            Tourist tourist = touristOptional.get();
-            tourist.setIsEnabled(false);
-            touristRepository.save(tourist);
-            return ResponseEntity.ok("Tourist disabled successfully");
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("Tourist not found with email: " + email);
+        try {
+            if (touristOptional.isPresent()) {
+                if (keycloakService.isPasswordCorrect(email, password)){
+                    Tourist tourist = touristOptional.get();
+                    tourist.setIsEnabled(false);
+                    ResponseEntity<String> res = keycloakService.Disable(email);
+                    if (res.getStatusCode().isSameCodeAs(HttpStatus.OK)){
+                        touristRepository.save(tourist);
+                        return ResponseEntity.status(HttpStatus.OK).body("Tourist Disabled");
+                    } else {
+                        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res.getBody());
+                    }
+                } else {
+                    return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body("Incorrect Password Or Account Not Verified Or Disabled");
+                }
+
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body("Tourist Does Not Exist");
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error Occurred, Please Try Again");
         }
+
     }
-
-
-
-
-
-
 
 }
