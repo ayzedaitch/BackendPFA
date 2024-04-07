@@ -105,6 +105,7 @@ public class KeycloakService {
         String userId = keycloak.realm(keycloakAdminRealm).users().search(email).get(0).getId();
         UserRepresentation user = usersResource.get(userId).toRepresentation();
         user.setRequiredActions(Collections.singletonList("UPDATE_PASSWORD"));
+        user.setEmailVerified(false);
         usersResource.get(userId).update(user);
     }
 
@@ -189,5 +190,19 @@ public class KeycloakService {
             System.out.println(e.getMessage());
         }
 
+    }
+
+    public ResponseEntity<String> updateInfo(String email, Tourist tourist) {
+        try{
+            UsersResource usersResource = keycloak.realm(keycloakAdminRealm).users();
+            String userId = keycloak.realm(keycloakAdminRealm).users().search(email).get(0).getId();
+            UserRepresentation user = usersResource.get(userId).toRepresentation();
+            user.setFirstName(tourist.getFirstName());
+            user.setLastName(tourist.getLastName());
+            usersResource.get(userId).update(user);
+            return ResponseEntity.status(HttpStatus.OK).body("Tourist Info Updated");
+        } catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
     }
 }

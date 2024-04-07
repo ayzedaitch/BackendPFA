@@ -47,6 +47,30 @@ public class TouristController {
         }
     }
 
+    @PostMapping("/{email:.+}")
+    public ResponseEntity<String> updateTouristInfo(@PathVariable("email") String email, @RequestBody Tourist tourist){
+        Optional<Tourist> touristOptional = touristRepository.findByEmail(email);
+        try {
+            if (touristOptional.isPresent()){
+                Tourist dbTourist = touristOptional.get();
+                dbTourist.setFirstName(tourist.getFirstName());
+                dbTourist.setLastName(tourist.getLastName());
+                dbTourist.setPhoneNumber(tourist.getPhoneNumber());
+                ResponseEntity<String> res= keycloakService.updateInfo(email, tourist);
+                if(res.getStatusCode().isSameCodeAs(HttpStatus.OK)){
+                    touristRepository.save(dbTourist);
+                    return ResponseEntity.status(HttpStatus.OK).body("Tourist Info Updated");
+                } else {
+                    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res.getBody());
+                }
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tourist Does Not Exist");
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error Occurred, Please Try Again");
+        }
+    }
+
     @PostMapping("/update-email")
     public ResponseEntity<String> updateTouristEmail(@RequestParam("currentEmail") String currentEmail,
                                                      @RequestParam("newEmail") String newEmail,
