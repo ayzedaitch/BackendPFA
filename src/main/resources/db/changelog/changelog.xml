@@ -27,6 +27,10 @@
 
     <include file="db/changelog/scripts/Create_indexEmail_tourist_table.xml" />
 
+    <include file="db/changelog/scripts/create_circuit_table.xml" />
+    <include file="db/changelog/scripts/create_tourist_circuit_table.xml" />
+    <include file="db/changelog/scripts/create_circuit_monument.xml" />
+
 
 
 

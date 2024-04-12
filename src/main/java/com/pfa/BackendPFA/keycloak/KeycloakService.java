@@ -131,7 +131,7 @@ public class KeycloakService {
 
         Map<String, String> formData = new HashMap<>();
         formData.put("client_id", "pfa");
-        formData.put("client_secret", "d7Jv4FjLDvvQUrI9F8RjdoHeCZKFuzfP");
+        formData.put("client_secret", "J6PM2oMnkiEURZJx5YzudNMt3eFQ0bnt");
         formData.put("grant_type", "password");
         formData.put("username", email);
         formData.put("password", password);
@@ -171,7 +171,7 @@ public class KeycloakService {
 
             Map<String, String> formData = new HashMap<>();
             formData.put("client_id", "pfa");
-            formData.put("client_secret", "d7Jv4FjLDvvQUrI9F8RjdoHeCZKFuzfP");
+            formData.put("client_secret", "J6PM2oMnkiEURZJx5YzudNMt3eFQ0bnt");
             formData.put("refresh_token", tokenResponse.getRefreshToken());
 
             StringBuilder requestBody = new StringBuilder();
