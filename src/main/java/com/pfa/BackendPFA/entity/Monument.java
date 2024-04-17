@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.w3c.dom.Text;
 
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -24,9 +26,11 @@ public class Monument {
     private Double latitude;
     @Column(name = "longitude")
     private Double longitude;
+    @OneToMany(mappedBy = "departureMonument")
+    private List<Circuit> circuitDeparture;
     @ManyToOne
     @JoinColumn(name = "city_id")
     private City city;
-
-
+    @ManyToMany(mappedBy = "monuments")
+    private List<Circuit> circuits;
 }

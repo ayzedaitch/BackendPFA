@@ -31,7 +31,9 @@
     <include file="db/changelog/scripts/create_tourist_circuit_table.xml" />
     <include file="db/changelog/scripts/create_circuit_monument.xml" />
 
+    <include file="db/changelog/scripts/drop_circuit_tourist_table.xml" />
 
+    <include file="db/changelog/scripts/alter_circuit _table.xml" />
 
 
 

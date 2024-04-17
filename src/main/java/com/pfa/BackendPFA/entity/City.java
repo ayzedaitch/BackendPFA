@@ -24,4 +24,6 @@ public class City {
     private String name;
     @OneToMany(mappedBy = "city")
     private List<Monument> monuments;
+    @OneToMany(mappedBy = "city")
+    private List<Circuit> circuits;
 }

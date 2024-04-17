@@ -12,6 +12,7 @@ import org.keycloak.admin.client.resource.UsersResource;
 import org.keycloak.representations.idm.CredentialRepresentation;
 import org.keycloak.representations.idm.RoleRepresentation;
 import org.keycloak.representations.idm.UserRepresentation;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -30,6 +31,8 @@ public class KeycloakService {
     private final String keycloakAdminRealm = "ENSA";
     private final String keycloakAdminClientId = "admin-cli";
     private final String keycloakAdminGrantType = "password";
+    @Value("${keycloak.client-secret}")
+    private String clientSecret;
 
     private final String keycloakServerUrl = "http://localhost:8080";
     private final Keycloak keycloak = KeycloakBuilder.builder()
@@ -131,7 +134,7 @@ public class KeycloakService {
 
         Map<String, String> formData = new HashMap<>();
         formData.put("client_id", "pfa");
-        formData.put("client_secret", "J6PM2oMnkiEURZJx5YzudNMt3eFQ0bnt");
+        formData.put("client_secret", clientSecret);
         formData.put("grant_type", "password");
         formData.put("username", email);
         formData.put("password", password);
@@ -171,7 +174,7 @@ public class KeycloakService {
 
             Map<String, String> formData = new HashMap<>();
             formData.put("client_id", "pfa");
-            formData.put("client_secret", "J6PM2oMnkiEURZJx5YzudNMt3eFQ0bnt");
+            formData.put("client_secret", clientSecret);
             formData.put("refresh_token", tokenResponse.getRefreshToken());
 
             StringBuilder requestBody = new StringBuilder();

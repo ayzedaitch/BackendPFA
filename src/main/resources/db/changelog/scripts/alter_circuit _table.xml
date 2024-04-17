@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+        http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+
+
+    <changeSet id="alter_circuit_table_1" author="pfa">
+        <addColumn tableName="circuit" >
+            <column name="departure_time" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="departure_monument_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_circuit_monument" references="monument(id)"/>
+            </column>
+            <column name="tourist_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_circuit_tourist" references="tourist(id)"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

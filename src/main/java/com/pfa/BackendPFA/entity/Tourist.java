@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Builder
 @Data
@@ -28,6 +30,7 @@ public class Tourist {
     private String phoneNumber;
     @Column(name = "is_enabled")
     private Boolean isEnabled ;
-
+    @OneToMany(mappedBy = "tourist")
+    private List<Circuit> circuits;
 
 }
