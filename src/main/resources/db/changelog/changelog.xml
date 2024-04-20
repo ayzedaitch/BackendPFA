@@ -35,6 +35,6 @@
 
     <include file="db/changelog/scripts/alter_circuit _table.xml" />
 
-
+    <include file="db/changelog/scripts/update_fes_rowValue_to_fez.xml" />
 
 </databaseChangeLog>

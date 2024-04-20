@@ -14,8 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin("*")
 public class CityController {
 
-    @Autowired
-    private CityRepository cityRepository;
+    private final CityRepository cityRepository;
 
     @GetMapping("/{cityName}")
     public ResponseEntity<City> getCityByName(@PathVariable String cityName) {
