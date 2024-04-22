@@ -26,11 +26,11 @@ public class Monument {
     private Double latitude;
     @Column(name = "longitude")
     private Double longitude;
-    @OneToMany(mappedBy = "departureMonument")
-    private List<Circuit> circuitDeparture;
+//    @OneToMany(mappedBy = "departureMonument")
+//    private List<Circuit> circuitDeparture;
     @ManyToOne
     @JoinColumn(name = "city_id")
     private City city;
-    @ManyToMany(mappedBy = "monuments")
-    private List<Circuit> circuits;
+//    @ManyToMany(mappedBy = "monuments")
+//    private List<Circuit> circuits;
 }

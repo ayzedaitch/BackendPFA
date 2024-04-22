@@ -30,7 +30,7 @@ public class Tourist {
     private String phoneNumber;
     @Column(name = "is_enabled")
     private Boolean isEnabled ;
-    @OneToMany(mappedBy = "tourist")
-    private List<Circuit> circuits;
+//    @OneToMany(mappedBy = "tourist")
+//    private List<Circuit> circuits;
 
 }

@@ -31,6 +31,10 @@
       "enforcement-mode": "DISABLED"
     },
     {
+      "path": "/api/monuments",
+      "enforcement-mode": "DISABLED"
+    },
+    {
       "path": "/api/tourists/{email:.+}",
       "enforcement-mode": "DISABLED"
     }

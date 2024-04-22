@@ -22,8 +22,8 @@ public class City {
     private int id;
     @Column(name = "name")
     private String name;
-    @OneToMany(mappedBy = "city")
-    private List<Monument> monuments;
-    @OneToMany(mappedBy = "city")
-    private List<Circuit> circuits;
+//    @OneToMany(mappedBy = "city")
+//    private List<Monument> monuments;
+//    @OneToMany(mappedBy = "city")
+//    private List<Circuit> circuits;
 }
