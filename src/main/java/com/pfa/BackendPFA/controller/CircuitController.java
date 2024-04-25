@@ -34,9 +34,10 @@ public class CircuitController {
     private final MonumentRepository monumentRepository;
     private final TouristRepository touristRepository;
 
-    @GetMapping
-    public ResponseEntity<List<CircuitResponse>> getAllCircuits() {
-        List<Circuit> circuits = circuitRepository.findAll();
+    @GetMapping("/{email:.+}")
+    public ResponseEntity<List<CircuitResponse>> getAllCircuits(@PathVariable String email) {
+        Tourist tourist = touristRepository.findByEmail(email).get();
+        List<Circuit> circuits = circuitRepository.findByTourist(tourist);
         List<CircuitResponse> circuitResponses = circuits.stream()
                 .map(this::mapToCircuitResponse)
                 .collect(Collectors.toList());
@@ -47,7 +48,7 @@ public class CircuitController {
         CircuitResponse response = new CircuitResponse();
         response.setCircuitId(circuit.getId());
         response.setDepartureTime(circuit.getDepartureTime());
-        response.setDepartureMonumentId(circuit.getDepartureMonument().getId());
+        response.setDepartureMonumentName(circuit.getDepartureMonument().getName());
 
         // Assuming City is associated with Circuit and City has a reference to Monument
         response.setCityName(circuit.getCity().getName());
@@ -90,4 +91,21 @@ public class CircuitController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteCircuit(@PathVariable int id){
+        try {
+            Optional<Circuit> circuit = circuitRepository.findById(id);
+            if (circuit.isPresent()){
+                circuitRepository.deleteById(id);
+            } else {
+                throw new RuntimeException();
+            }
+
+            return ResponseEntity.ok().build();
+        } catch(Exception e){
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
 }

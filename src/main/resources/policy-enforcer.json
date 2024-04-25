@@ -15,6 +15,14 @@
       "enforcement-mode": "DISABLED"
     },
     {
+      "path": "/api/circuits/delete/{id}",
+      "enforcement-mode": "DISABLED"
+    },
+    {
+      "path": "/api/circuits/{email:.+}",
+      "enforcement-mode": "DISABLED"
+    },
+    {
       "path": "/api/tourists",
       "enforcement-mode": "DISABLED"
     },

@@ -18,8 +18,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MonumentsController {
     private final MonumentRepository monumentRepository;
-    private final CityRepository cityRepository;
-
     @GetMapping
     public ResponseEntity<?> getMonumentByCity(){
         try{

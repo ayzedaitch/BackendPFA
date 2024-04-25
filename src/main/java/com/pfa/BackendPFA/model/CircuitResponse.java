@@ -15,5 +15,5 @@ public class CircuitResponse {
     private int circuitId;
     private String cityName;
     private Date departureTime;
-    private int departureMonumentId;
+    private String departureMonumentName;
 }
