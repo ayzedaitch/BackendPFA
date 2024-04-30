@@ -19,7 +19,7 @@ import java.util.List;
 public class MonumentsController {
     private final MonumentRepository monumentRepository;
     @GetMapping
-    public ResponseEntity<?> getMonumentByCity(){
+    public ResponseEntity<?> getMonuments(){
         try{
             List<Monument> monuments = monumentRepository.findAll();
             return ResponseEntity.ok(monuments);

@@ -45,6 +45,10 @@
     {
       "path": "/api/tourists/{email:.+}",
       "enforcement-mode": "DISABLED"
+    },
+    {
+      "path": "/api/circuits/{email}/{circuitID}",
+      "enforcement-mode": "DISABLED"
     }
   ]
 }
