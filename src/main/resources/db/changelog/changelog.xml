@@ -37,4 +37,15 @@
 
     <include file="db/changelog/scripts/update_fes_rowValue_to_fez.xml" />
 
+    <include file="db/changelog/scripts/create_post_table.xml" />
+    <include file="db/changelog/scripts/create_comment_table.xml" />
+    <include file="db/changelog/scripts/create_comment_tmp_table.xml" />
+
+    <include file="db/changelog/scripts/add_column_is_valid_comment_tmp_table.xml" />
+    <include file="db/changelog/scripts/Drop_isValidColumn_commentTmp.xml" />
+
+
+
+
+
 </databaseChangeLog>
