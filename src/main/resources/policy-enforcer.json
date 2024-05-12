@@ -3,7 +3,7 @@
   "auth-server-url": "http://localhost:8080",
   "resource": "pfa",
   "credentials": {
-    "secret": "d7Jv4FjLDvvQUrI9F8RjdoHeCZKFuzfP"
+    "secret": "J6PM2oMnkiEURZJx5YzudNMt3eFQ0bnt"
   },
   "paths" : [
     {
