@@ -18,7 +18,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @RequestMapping("/api/comments")
 @CrossOrigin("*")
-public class commentController {
+public class CommentController {
 
     @Autowired
     private CommentRepository commentRepository;

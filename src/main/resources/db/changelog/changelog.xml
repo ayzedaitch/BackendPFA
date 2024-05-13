@@ -44,7 +44,10 @@
     <include file="db/changelog/scripts/add_column_is_valid_comment_tmp_table.xml" />
     <include file="db/changelog/scripts/Drop_isValidColumn_commentTmp.xml" />
 
+    <include file="db/changelog/scripts/alter_post_table_column.xml" />
+    <include file="db/changelog/scripts/add_columns_post_table.xml" />
 
+    <include file="db/changelog/scripts/add_votes_column_post_table.xml" />
 
 
 

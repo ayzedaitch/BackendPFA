@@ -57,11 +57,6 @@ public class CircuitController {
     @PostMapping
     public ResponseEntity<?> createCircuit(@RequestBody CircuitRequest request){
         try {
-            System.out.println(request.getMonuments());
-            System.out.println(request.getTouristEmail());
-            System.out.println(request.getDepDate());
-            System.out.println(request.getCityName());
-            System.out.println(request.getDepMonument());
             Circuit circuit = new Circuit();
             City city = cityRepository.findByName(request.getCityName());
             List<Monument> monumentList = request.getMonuments()

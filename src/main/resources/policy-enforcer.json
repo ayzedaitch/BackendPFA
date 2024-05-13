@@ -3,7 +3,7 @@
   "auth-server-url": "http://localhost:8080",
   "resource": "pfa",
   "credentials": {
-    "secret": "J6PM2oMnkiEURZJx5YzudNMt3eFQ0bnt"
+    "secret": "d7Jv4FjLDvvQUrI9F8RjdoHeCZKFuzfP"
   },
   "paths" : [
     {
@@ -48,6 +48,10 @@
     },
     {
       "path": "/api/circuits/{email}/{circuitID}",
+      "enforcement-mode": "DISABLED"
+    },
+    {
+      "path": "/api/posts/*",
       "enforcement-mode": "DISABLED"
     }
   ]
