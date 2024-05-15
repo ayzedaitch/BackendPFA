@@ -1,13 +1,14 @@
 package com.pfa.BackendPFA.controller;
 
-import com.pfa.BackendPFA.entity.Circuit;
-import com.pfa.BackendPFA.entity.Monument;
-import com.pfa.BackendPFA.entity.Post;
-import com.pfa.BackendPFA.entity.Tourist;
+import com.pfa.BackendPFA.entity.*;
 import com.pfa.BackendPFA.repository.CircuitRepository;
+import com.pfa.BackendPFA.repository.CommentRepository;
 import com.pfa.BackendPFA.repository.PostRepository;
 import com.pfa.BackendPFA.repository.TouristRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +22,66 @@ public class PostController {
     private final PostRepository postRepository;
     private final CircuitRepository circuitRepository;
     private final TouristRepository touristRepository;
+    private final CommentRepository commentRepository;
+
+    @GetMapping
+    public ResponseEntity<?> getAllPosts(@RequestParam(defaultValue = "0") int page,
+                                         @RequestParam(defaultValue = "") String city,
+                                         @RequestParam(defaultValue = "") String possession,
+                                         @RequestParam(defaultValue = "") String sort){
+
+        try{
+            Pageable pageable = PageRequest.of(page, 5);
+            if (!(city == null || city.isEmpty())){
+                List<Post> posts = postRepository.findByCircuitCityName(city,pageable).getContent();
+                return ResponseEntity.ok(mapPosts(posts));
+            }
+            else if (!(possession == null || possession.isEmpty())){
+                List<Post> posts = postRepository.findByTouristEmail(possession, pageable).getContent();
+                return ResponseEntity.ok(mapPosts(posts));
+            } else if (sort.equalsIgnoreCase("mostVoted")){
+                List<Post> posts = postRepository.findAllByOrderByVotesDesc(pageable).getContent();
+                return ResponseEntity.ok(mapPosts(posts));
+            } else {
+                List<Post> posts = postRepository.findAll(pageable).getContent();
+                return ResponseEntity.ok(mapPosts(posts));
+            }
+
+        } catch (Exception e){
+            return ResponseEntity.ok(e.getMessage());
+        }
+    }
+
+    private List<?> mapPosts(List<Post> posts){
+        List<Map<String, Object>> response = new ArrayList<>();
+        for (Post post:
+                posts) {
+            List<Comment> comments = commentRepository.findByPost(post);
+            Map<String, Object> calculationRequirements = new HashMap<>();
+            calculationRequirements.put("departure", new double[]{
+                    post.getCircuit().getDepartureMonument().getLatitude(), post.getCircuit().getDepartureMonument().getLongitude()
+            });
+            List<double[]> monumentsCoordinates = new ArrayList<>();
+
+            for (Monument monument:
+                    post.getCircuit().getMonuments()) {
+                // return just the monuments without the departure
+                if (monument.getId() != post.getCircuit().getDepartureMonument().getId()){
+                    monumentsCoordinates.add(new double[]{monument.getLatitude(),monument.getLongitude()});
+                }
+            }
+            calculationRequirements.put("coordinates", monumentsCoordinates);
+
+            Map<String, Object> result = new HashMap<>();
+            result.put("calculationRequirements", calculationRequirements);
+            result.put("content", post.getContent());
+            result.put("votes", post.getVotes());
+            result.put("comments", comments);
+
+            response.add(result);
+        }
+        return response;
+    }
 
     @PostMapping
     public ResponseEntity<?> createPost(@RequestParam("email") String email,
