@@ -2,8 +2,11 @@ package com.pfa.BackendPFA.controller;
 
 import com.pfa.BackendPFA.entity.Comment;
 import com.pfa.BackendPFA.entity.CommentTmp;
+import com.pfa.BackendPFA.model.CommentRequest;
 import com.pfa.BackendPFA.repository.CommentRepository;
 import com.pfa.BackendPFA.repository.CommentTmpRepository;
+import com.pfa.BackendPFA.repository.PostRepository;
+import com.pfa.BackendPFA.repository.TouristRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,14 +21,19 @@ import java.util.List;
 @CrossOrigin("*")
 public class CommentTmpController {
 
-    @Autowired
-    private CommentTmpRepository commentTmpRepository;
-    private CommentRepository commentRepository;
+    private final CommentTmpRepository commentTmpRepository;
+    private final CommentRepository commentRepository;
+    private final TouristRepository touristRepository;
+    private final PostRepository postRepository;
 
     @GetMapping
-    public ResponseEntity<List<CommentTmp>> getAllComments() {
-        List<CommentTmp> comments = commentTmpRepository.findAll();
-        return new ResponseEntity<>(comments, HttpStatus.OK);
+    public ResponseEntity<?> getAllComments() {
+        try{
+            List<CommentTmp> comments = commentTmpRepository.findAll();
+            return ResponseEntity.ok(comments);
+        } catch (Exception e){
+            return ResponseEntity.internalServerError().build();
+        }
     }
 
     /*
@@ -64,9 +72,17 @@ public class CommentTmpController {
     }
 
     @PostMapping
-    public ResponseEntity<CommentTmp> postComment(@RequestBody CommentTmp comment) {
-        CommentTmp savedComment = commentTmpRepository.save(comment);
-        return new ResponseEntity<>(savedComment, HttpStatus.CREATED);
+    public ResponseEntity<?> postComment(@RequestBody CommentRequest req) {
+        try{
+            CommentTmp comment = new CommentTmp();
+            comment.setContent(req.getContent());
+            comment.setTourist(touristRepository.findByEmail(req.getTouristEmail()).get());
+            comment.setPost(postRepository.findById(req.getPostId()).get());
+            commentTmpRepository.save(comment);
+            return ResponseEntity.ok().build();
+        } catch (Exception e){
+            return ResponseEntity.internalServerError().build();
+        }
     }
 
 

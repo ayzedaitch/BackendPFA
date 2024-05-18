@@ -42,6 +42,9 @@ public class PostController {
             } else if (sort.equalsIgnoreCase("mostVoted")){
                 List<Post> posts = postRepository.findAllByOrderByVotesDesc(pageable).getContent();
                 return ResponseEntity.ok(mapPosts(posts));
+            } else if (sort.equalsIgnoreCase("recent")){
+                List<Post> posts = postRepository.findAllByOrderByCreatedAtDesc(pageable).getContent();
+                return ResponseEntity.ok(mapPosts(posts));
             } else {
                 List<Post> posts = postRepository.findAll(pageable).getContent();
                 return ResponseEntity.ok(mapPosts(posts));
@@ -77,6 +80,9 @@ public class PostController {
             result.put("content", post.getContent());
             result.put("votes", post.getVotes());
             result.put("comments", comments);
+            result.put("owner", post.getTourist());
+            result.put("createdAt", post.getCreatedAt());
+            result.put("id",post.getId());
 
             response.add(result);
         }

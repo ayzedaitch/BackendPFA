@@ -3,14 +3,18 @@ package com.pfa.BackendPFA.controller;
 
 import com.pfa.BackendPFA.entity.Comment;
 import com.pfa.BackendPFA.entity.CommentTmp;
+import com.pfa.BackendPFA.model.CommentRequest;
 import com.pfa.BackendPFA.repository.CommentRepository;
 
+import com.pfa.BackendPFA.repository.PostRepository;
+import com.pfa.BackendPFA.repository.TouristRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.naming.CompositeName;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,9 +24,9 @@ import java.util.Optional;
 @CrossOrigin("*")
 public class CommentController {
 
-    @Autowired
-    private CommentRepository commentRepository;
-
+    private final CommentRepository commentRepository;
+    private final TouristRepository touristRepository;
+    private final PostRepository postRepository;
 
 
     @GetMapping
@@ -39,8 +43,16 @@ public class CommentController {
     }
 
     @PostMapping
-    public ResponseEntity<Comment> postComment(@RequestBody Comment comment) {
-        Comment savedComment = commentRepository.save(comment);
-        return new ResponseEntity<>(savedComment, HttpStatus.CREATED);
+    public ResponseEntity<?> postComment(@RequestBody CommentRequest req) {
+        try{
+            Comment comment = new Comment();
+            comment.setContent(req.getContent());
+            comment.setTourist(touristRepository.findByEmail(req.getTouristEmail()).get());
+            comment.setPost(postRepository.findById(req.getPostId()).get());
+            commentRepository.save(comment);
+            return ResponseEntity.ok().build();
+        } catch (Exception e){
+            return ResponseEntity.internalServerError().build();
+        }
     }
 }

@@ -24,7 +24,7 @@ public class CommentTmp {
     private String content;
 
     @Column(name = "created_at")
-    private Timestamp createdAt;
+    private Timestamp createdAt = new Timestamp(System.currentTimeMillis());
 
     @ManyToOne
     @JoinColumn(name = "tourist_id")

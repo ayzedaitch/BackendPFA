@@ -11,5 +11,6 @@ public interface TouristRepository extends JpaRepository<Tourist, Integer> {
 
     Optional<Tourist> findByEmail(String email);
     List<Tourist> findByIsEnabledTrue();
+    List<Tourist> findByIsEnabledFalse();
 
 }

@@ -24,11 +24,29 @@ public class TouristController {
 
     @GetMapping
     public ResponseEntity<List<Tourist>> getAllTourists() {
-        List<Tourist> tourists = touristRepository.findByIsEnabledTrue();
-        if (!tourists.isEmpty()) {
-            return ResponseEntity.ok(tourists);
-        } else {
-            return ResponseEntity.notFound().build();
+        try{
+            List<Tourist> tourists = touristRepository.findByIsEnabledTrue();
+            if (!tourists.isEmpty()) {
+                return ResponseEntity.ok(tourists);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e){
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+    @GetMapping("/disabled")
+    public ResponseEntity<List<Tourist>> getDisabledTourists() {
+        try{
+            List<Tourist> tourists = touristRepository.findByIsEnabledFalse();
+            if (!tourists.isEmpty()) {
+                return ResponseEntity.ok(tourists);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e){
+            return ResponseEntity.internalServerError().build();
         }
     }
 

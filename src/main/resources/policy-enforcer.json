@@ -23,7 +23,7 @@
       "enforcement-mode": "DISABLED"
     },
     {
-      "path": "/api/tourists",
+      "path": "/api/commentsTmp/*",
       "enforcement-mode": "DISABLED"
     },
     {
@@ -43,7 +43,7 @@
       "enforcement-mode": "DISABLED"
     },
     {
-      "path": "/api/tourists/{email:.+}",
+      "path": "/api/tourists/*",
       "enforcement-mode": "DISABLED"
     },
     {
@@ -52,6 +52,10 @@
     },
     {
       "path": "/api/posts/*",
+      "enforcement-mode": "DISABLED"
+    },
+    {
+      "path": "/api/comments/*",
       "enforcement-mode": "DISABLED"
     }
   ]
