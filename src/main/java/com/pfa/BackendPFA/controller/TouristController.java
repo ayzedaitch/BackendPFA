@@ -170,4 +170,54 @@ public class TouristController {
 
     }
 
+
+
+    @PostMapping("/blacklist")
+    public ResponseEntity<String> blacklistTourist(@RequestParam("id") int id){
+        Optional<Tourist> touristOptional = touristRepository.findById(id);
+        try {
+            if (touristOptional.isPresent()) {
+                Tourist tourist = touristOptional.get();
+                tourist.setIsEnabled(false);
+                ResponseEntity<String> res = keycloakService.Disable(tourist.getEmail());
+                if (res.getStatusCode().isSameCodeAs(HttpStatus.OK)){
+                    touristRepository.save(tourist);
+                    return ResponseEntity.status(HttpStatus.OK).body("Tourist Blacklisted");
+                } else {
+                    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res.getBody());
+                }
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body("Tourist Does Not Exist");
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error Occurred, Please Try Again");
+        }
+
+    }
+
+    @PostMapping("/enable")
+    public ResponseEntity<String> enableTourist(@RequestParam("id") int id){
+        Optional<Tourist> touristOptional = touristRepository.findById(id);
+        try {
+            if (touristOptional.isPresent()) {
+                Tourist tourist = touristOptional.get();
+                tourist.setIsEnabled(true);
+                ResponseEntity<String> res = keycloakService.Enable(tourist.getEmail());
+                if (res.getStatusCode().isSameCodeAs(HttpStatus.OK)){
+                    touristRepository.save(tourist);
+                    return ResponseEntity.status(HttpStatus.OK).body("Tourist Enabled");
+                } else {
+                    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res.getBody());
+                }
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body("Tourist Does Not Exist");
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error Occurred, Please Try Again");
+        }
+
+    }
+
 }

@@ -83,6 +83,7 @@ public class PostController {
             result.put("owner", post.getTourist());
             result.put("createdAt", post.getCreatedAt());
             result.put("id",post.getId());
+            result.put("circuitId",post.getCircuit().getId());
 
             response.add(result);
         }

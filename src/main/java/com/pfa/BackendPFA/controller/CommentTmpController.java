@@ -36,40 +36,51 @@ public class CommentTmpController {
         }
     }
 
-    /*
-    @DeleteMapping("/{id}")
-    public String deleteComment(@PathVariable("id") int commentId) {
-        // Check if the comment exists
-        if (commentTmpRepository.existsById(commentId)) {
-            commentTmpRepository.deleteById(commentId);
-            return "Comment with ID " + commentId + " deleted successfully.";
-        } else {
-            return "Comment with ID " + commentId + " not found.";
+    @PostMapping("/validate/{id}")
+    public ResponseEntity<?> moveCommentToActualTableAndDelete(@PathVariable("id") int commentId) {
+        try{
+            // Check if the comment exists in the temporary table
+            CommentTmp commentTmp = commentTmpRepository.findById(commentId).orElse(null);
+            if (commentTmp != null) {
+                // Save the comment to the actual table
+                System.out.println(1);
+                Comment comment = new Comment();
+                comment.setContent(commentTmp.getContent());
+                comment.setCreatedAt(commentTmp.getCreatedAt());
+                comment.setPost(commentTmp.getPost());
+                comment.setTourist(commentTmp.getTourist());
+
+                commentRepository.save(comment);
+
+                // Delete the comment from the temporary table
+                commentTmpRepository.deleteById(commentId);
+                return ResponseEntity.ok().build();
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e){
+            return ResponseEntity.internalServerError().build();
         }
+
     }
-    */
 
-    @DeleteMapping("/{id}")
-    public String moveCommentToActualTableAndDelete(@PathVariable("id") int commentId) {
-        // Check if the comment exists in the temporary table
-        CommentTmp commentTmp = commentTmpRepository.findById(commentId).orElse(null);
-        if (commentTmp != null) {
-            // Save the comment to the actual table
-            Comment comment = new Comment();
-            comment.setContent(commentTmp.getContent());
-            comment.setCreatedAt(commentTmp.getCreatedAt());
-            comment.setPost(commentTmp.getPost());
-            comment.setTourist(comment.getTourist());
-
-            commentRepository.save(comment);
-
-            // Delete the comment from the temporary table
-            commentTmpRepository.deleteById(commentId);
-            return "Comment moved to actual table and deleted from temporary table successfully.";
-        } else {
-            return "Comment with ID " + commentId + " not found in temporary table.";
+    @PostMapping("/reject/{id}")
+    public ResponseEntity<?> reject(@PathVariable("id") int commentId) {
+        try{
+            // Check if the comment exists in the temporary table
+            CommentTmp commentTmp = commentTmpRepository.findById(commentId).orElse(null);
+            if (commentTmp != null) {
+                commentTmpRepository.deleteById(commentId);
+                return ResponseEntity.ok().build();
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e){
+            return ResponseEntity.internalServerError().build();
         }
+
     }
+
 
     @PostMapping
     public ResponseEntity<?> postComment(@RequestBody CommentRequest req) {

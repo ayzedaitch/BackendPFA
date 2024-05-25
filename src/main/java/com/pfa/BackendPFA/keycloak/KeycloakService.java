@@ -125,6 +125,19 @@ public class KeycloakService {
         }
     }
 
+    public ResponseEntity<String> Enable(String email){
+        try{
+            UsersResource usersResource = keycloak.realm(keycloakAdminRealm).users();
+            String userId = keycloak.realm(keycloakAdminRealm).users().search(email).get(0).getId();
+            UserRepresentation user = usersResource.get(userId).toRepresentation();
+            user.setEnabled(true);
+            usersResource.get(userId).update(user);
+            return ResponseEntity.status(HttpStatus.OK).body("Tourist Enabled");
+        } catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+    }
+
     public boolean isPasswordCorrect(String email, String password){
         RestTemplate restTemplate = new RestTemplate();
         String url = "http://localhost:8080/realms/ENSA/protocol/openid-connect/token";
