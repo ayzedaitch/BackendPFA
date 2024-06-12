@@ -82,7 +82,7 @@ public class CommentTmpController {
     }
 
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<?> postComment(@RequestBody CommentRequest req) {
         try{
             CommentTmp comment = new CommentTmp();

@@ -9,54 +9,6 @@
     {
       "path": "/register",
       "enforcement-mode": "DISABLED"
-    },
-    {
-      "path": "/api/circuits",
-      "enforcement-mode": "DISABLED"
-    },
-    {
-      "path": "/api/circuits/delete/{id}",
-      "enforcement-mode": "DISABLED"
-    },
-    {
-      "path": "/api/circuits/{email:.+}",
-      "enforcement-mode": "DISABLED"
-    },
-    {
-      "path": "/api/commentsTmp/*",
-      "enforcement-mode": "DISABLED"
-    },
-    {
-      "path": "/api/tourists/update-email",
-      "enforcement-mode": "DISABLED"
-    },
-    {
-      "path": "/api/tourists/delete",
-      "enforcement-mode": "DISABLED"
-    },
-    {
-      "path": "/api/tourists/update-password",
-      "enforcement-mode": "DISABLED"
-    },
-    {
-      "path": "/api/monuments",
-      "enforcement-mode": "DISABLED"
-    },
-    {
-      "path": "/api/tourists/*",
-      "enforcement-mode": "DISABLED"
-    },
-    {
-      "path": "/api/circuits/{email}/{circuitID}",
-      "enforcement-mode": "DISABLED"
-    },
-    {
-      "path": "/api/posts/*",
-      "enforcement-mode": "DISABLED"
-    },
-    {
-      "path": "/api/comments/*",
-      "enforcement-mode": "DISABLED"
     }
   ]
 }
